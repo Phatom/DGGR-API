@@ -1,0 +1,1369 @@
+\documentclass{ctexbook}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{bm}
+\usepackage[english]{babel}
+\title{Notes on Appendix G in DGGR }
+\author{Yaoqi Zhang}
+\date{\today}
+\begin{document}
+
+\maketitle
+
+\pagestyle{empty} % No headers
+
+\tableofcontents % Print the table of contents itself
+
+\cleardoublepage % Forces the first chapter to start on an odd page so it's on the right
+
+
+\part{纤维丛简介}
+\chapter{主丛}
+
+\section{主丛的定义与例子}
+
+\subsection{定义}
+
+主丛由丛流形$P$、底流形$M$、结构群$G$构成，记为$P(M,G)$,简记为$P$,  s.t.
+
+\begin{itemize}
+    \item (a) 存在自由右作用$R\colon P\times G\to P$
+    \item (b) 存在$C^{\infty}$且到上的映射（称为投影映射）$\pi\colon P\to M$, s.t.
+    \begin{equation}
+        \pi^{-1}[\pi[p]]=\left\{pg\in P\colon g\in G\right\}
+    \end{equation}
+    其中记$x\equiv\pi(p)\in M$，称$\pi^{-1}[x]$为$P$上的一个纤维。
+    \item (c) 对于 $x\in M$ 的任意开邻域 $U$， 存在微分同胚映射 $T_{U}\colon \pi^{-1}[U]\to U\times G$, s.t.
+    \begin{equation}
+        T_{U}(p)\colon =(\pi(p),S_{U}(p))\equiv(x,S_{U}(p))
+    \end{equation}
+    其中映射$S_{U}\colon \pi^{-1}[U]\to G$, s.t.
+    \begin{equation}
+        S_{U}(pg)=S_{U}(p)g
+    \end{equation}
+    $T_{U}$称为一个局域平凡。
+\end{itemize}
+
+\subsection{说明}
+对于主丛的定义，我们做以下几点说明： 
+
+\begin{itemize}
+    \item (a) 可以借助映射 $R_{p}\colon G\to P$ 将原像集$G$上的微分结构与群结构带到像集$\pi^{-1}[x]$上，从而使得$G$与$\pi^{-1}[x]$李群同构。具体操作如下：
+    
+    由于$R_{p}$微分同胚且自由，因此$R_{p}\colon G\rightarrow\pi^{-1}[x]$是一个嵌入。因此可以为$\pi^{-1}[x]$赋予微分结构。
+    
+    $\forall p'=pg,p''=ph\in\pi^{-1}[x]$,映射 $R_{p}$ 应该保群乘法 $R_{p}(gh)=R_{p}(g)R_{p}(h)$, i.e. $(pg)\cdot(ph)\colon =p(gh)$
+    
+    因而$R_{p}\colon G\rightarrow\pi^{-1}[x]$是一个同构映射。但是不存在一个天然的李群同构映射，同构映射的选取依赖于参考点$p$。对于 $p,p' s.t.\pi(p)=\pi(p')$， 虽然对应同一条纤维，但是给出不同的同构映射。
+    \item (b) 对于一个局域平凡 $T_{U}$，唯一的确定一个微分同胚映射 $S_{U}\colon \pi^{-1}[U]\to G$。该映射在纤维 $\pi^{-1}[x]$ 上唯一确定了一个特殊点 $\breve{p}_{U}$, s.t. $S_{U}(\breve{p}_{U})=e$ （由 $S_{U}$ 到上且一一可知该特殊点存在且唯一），进而唯一挑选出来了一个李群同构$R_{\breve{p}_{U}}\colon G\to \pi^{-1}[x]$.
+    
+    下面我们证明一个结论：映射$S_{U}\colon \pi^{-1}[x]\to G$与$R_{\breve{p}_{U}}\colon G\rightarrow\pi^{-1}[x]$互逆。
+    
+    $\qquad$首先我们考虑$S_{U}\circ R_{\breve{p}_{U}}\colon G\to G$. $\forall g\in G$,
+    \begin{equation}
+        \begin{split}
+            S_{U}(R_{\breve{p}_{U}}(g))=S_{U}(\breve{p}_{U}g)=S_{U}(\breve{p})g=g
+        \end{split}
+    \end{equation}
+    
+    $\qquad$另外我们考虑 $R_{\breve{p}_{U}}\circ S_{U}\colon  \pi^{-1}[U]\rightarrow\pi^{-1}[U]$. $\forall p=\breve{p}_{U}h\in\pi^{-1}[U]$,
+    \begin{equation}
+        R_{\breve{p}_{U}}(S_U(p))=R_{\breve{p}_{U}}(S_U(\breve{p}_{U}h))=R_{\breve{p}_{U}}(h)=\breve{p}_{U}h=p
+    \end{equation}
+    
+    \item (c) 一个局域平凡$T_{U}\colon \pi^{-1}[U]\to U\times G$实际上类似于一个流形上的图，给出局域坐标。而所谓要求\[S_U(pg)=S_U(p)g\]即是要求$G$坐标的变换与点$p$的右作用下的变换相容。对于 $x$ 的两个交不为空的邻域 $U,V$, 在主丛上的坐标变换显然满足$x_V=x_U$。相应的$g\in G$的变换满足 $S_{U}(p)=S_{U}(p)S_{V}(p)^{-1}S_{V}(p)\equiv g_{UV}(x)S_{V}(p)$.
+    
+    定义转换函数：对于主丛上的两个局域平凡 $T_{U}\colon \pi^{-1}[U]\to U\times G$,
+    $T_{V}\colon \pi^{-1}[V]\to V\times G$， 其中$U\cap V\neq\varnothing$. 转换函数为 $g_{UV}\colon U\cap V\to G$定义为
+    \begin{equation}
+        g_{UV}(x)=S_{U}(p)S_{V}(p)^{-1},\;\forall x\in U\cap V,\pi(p)=x
+    \end{equation}
+    
+    下面首先证明转换函数$g_{UV}(x)\colon U\cap V\to G$是良定的。
+    
+    $\qquad$不妨设$p'=pg$，则
+    \begin{equation}
+        S_{U}(p')S_{V}(p')^{-1}=S_{U}(pg)S_{V}(pg)^{-1}=S_{U}(p)gg^{-1}S_{V}(p)^{-1}
+    \end{equation}
+    
+    下面我们证明一个重要结论，对于两个局域平凡$T_{U}\colon \pi^{-1}[U]\to U\times G$,$T_{V}\colon \pi^{-1}[V]\to V\times G$ 所诱导的特殊点$\breve{p}_{U},\breve{p}_{V}$，有转换关系：
+    \begin{equation}
+        \breve{p}_{V}=\breve{p}_{U}g_{UV}(x)
+    \end{equation}
+    
+    证明如下：
+    $\qquad$不妨设$\breve{p}_{V}=\breve{p}_{U}g$.则取$p=\breve{p}_{V}$，有
+    \begin{equation}
+        g_{UV}(x)=S_{U}(\breve{p}_V)S_{V}(\breve{p}_{V})^{-1}=S_{U}(\breve{p}_Ug)=g
+    \end{equation}
+
+    \item (d) 下面我们定义主丛上的截面，并说明截面与局域平凡一一对应。
+    
+    对于主丛$P(M,G)$，开子集 $U\cap M$，$C^{\infty}$映射$\sigma\colon U\to P$ 称为一个局域截面，若
+    \begin{equation}
+        \pi(\sigma(x))=x,\;\forall x\in U
+    \end{equation}
+    
+    给定一个局域平凡$T_{U}\colon \pi^{-1}[U]\to U\times P$，给出 $\breve{p}_{U}(x)\;\forall x\in U$， 即为一个局域截面。 
+    
+    给定一个截面 $\sigma(x)\colon U\to P$，赋予局域坐标。则 $\forall p\in P$，以$\sigma(\pi(p))$作为 $T_U$相应的特殊点。具体的有，$\forall p\in P,\exists g\in G,\text{s.t.}\;\sigma(\pi(p))\equiv \sigma(x)\equiv\breve{p}_U g,\text{定义}\; T_U(p):=(x,g).$ 同时显然有$S_U(pg)=S_U(p)g$。 实际上类似于以$\breve{p}_U$为$G$坐标的零点。
+    
+    显然，对于截面$\sigma_{U},\sigma_V$，有$\sigma_V(x)=\sigma_{U}(x)g_{UV}(x)$。
+    
+    显然，非平凡主丛不存在整体截面。理由如下：如果存在整体截面$\sigma\colon M\to P$，则其对应于整体平凡$T_M\colon \pi^{-1}[M]\to M\times G$。
+    
+    \item (e) 坐标变换与等价关系（纤维丛的定义）：
+    
+\end{itemize}
+
+\subsection{例子}
+
+例一：对于任意给定底流形$M$和结构群$G$，可以构造平凡纤维丛$P=M\times G$。构造只需要定义右作用、投影映射、局域平凡，具体过程如下：
+\begin{itemize}
+    \item (a) 定义李群$G$在主丛$P=M\times G$上的自由右作用$R\colon P\times G\to P: R_{g}(p)\equiv R_g(x,h):=(x,hg)\;,\;\forall g\in G,p\in P$
+    \item (b) 投影映射 $\pi\colon P\to M:\pi(x,g):=x$
+    \item (c) 局域平凡（实际上是整体平凡）$T_M\colon\pi^{-1}[M]\to M\times G,\text{即}\;T_M\colon P\to P$，选取为恒等映射即可。
+\end{itemize}
+
+例二：具体地，在例一中取$M=S^1,G=\mathbb{Z}_2$，得到平凡主丛$P=S^{1}\times\mathbb{Z}_2$，为两个圆环。
+
+例三：
+
+例四：标架丛
+
+底流形$M$，丛流形 $P=\left\{(x,e_{\mu})\colon x\in M,{e_u}=basis{(T_{x}M)}\right\}$. 
+设 $\dim{M}=n$, 则由于 $e_{\mu}=A^{\nu}_{\;\;\mu}\frac{\partial}{\partial x^{\nu}}$，有 $\dim{P}=n+n^2$。选取结构群为$\mathrm{GL}(n)$. 
+
+对于每一个 $g^{\nu}_{\;\;\mu}\in\mathrm{GL}(n)$ 定义右作用$R_{g}\colon P\to P$
+\begin{equation}
+    R_{g}(x,e_\mu)=(x,g^{\nu}_{\;\;\mu}e_{\nu})
+\end{equation}
+由于$g\in \mathrm{GL}(n)$可逆，因此$n$个$g^{\nu}_{\;\;\mu}e_{\nu}$线性无关，可以充当一组基底，即$(x,g^\nu_{\;\mu} e_\nu)\in P$.
+
+定义投影映射：
+\begin{equation}
+    \pi(x,e_\mu)=x
+\end{equation}
+
+定义局域平凡 $T_{U}(x,e_\mu)=(x,S_U(x,e_\mu))\equiv(x,h)$，其中群元 $h$ 满足 $h^{\nu}_{\;\;\mu}\frac{\partial}{\partial x^{\nu}}=e_\mu$, 则$h^{\nu}_{\;\;\mu}={e_\mu}\mathrm{dx^{\nu}}$，则
+\begin{equation}
+    S(x,e_\mu g^{\nu}_{\;\;\mu})=e_{\sigma}g^{\sigma}_{\;\;\mu}\mathrm{dx^{\nu}}=S(x,e_\mu)g
+\end{equation}
+
+接下来我们讨论标架丛上$T_{U}$对应的局域截面。对于特殊情形：$e_{\mu}=\frac{\partial}{\partial x^{\mu}}$，有 $h=I$，即$S(x,e_{\mu})=S\left(x,\frac{\partial}{\partial x^{\mu}}\right)=e$，根据特殊点的唯一性可知$\breve{p}_{U}=\left(x,\dfrac{\partial}{\partial x^{\mu}}\right)$， 也就是说： $T_U$ 对应的局域截面是$U$上的坐标基矢场。
+
+
+例五：正交归一标架丛
+如果底流形$M$上有度规场$g_{ab}$，号差为$(n_{-},n_{+})$，则可以定义正交归一标架$\hat{e}_{\mu}$，$P=P=\left\{(x,\hat{e}_{\mu})\right\}$.结构群选为$O(n_{-},n_{+})$.
+
+\subsection{Main Figure}
+
+
+\section{主丛上的基本矢量场}
+
+对于主丛 $P(M,G)$, 投影映射$\pi\colon  P\to M$为$T_{p}P$ 提供了一个天然的子空间结构，$V_p\colon =\left\{X\in T_{p}P\colon \pi_{*}(X)=0\right\}$。显然$V_p=T_p\pi^{-1}[x]$，即$\forall X\in V_p$，$X$切于$\pi^{-1}[x]$ 上的曲线。因此也称为$T_p P$的竖直子空间。对于纤维 $\pi^{-1}$上的每点指定一个该点竖直子空间中的元素，便得到了$pi^{-1}[x]$上的竖直矢量场。
+
+首先我们说，$\pi^{-1}[x]$上的竖直矢量场与李群$G$的李代数$\mathscr{G}$，以及李群$G$上的左不变矢量场之间有着很大的关联。
+
+第一，由于$R_p$是微分同胚，因此$R_{p*}\colon \mathscr{G}\to T_{p}\pi^{-1}[x]$同构。
+
+对于每个点$p\in\pi^{-1}[x]$，定义由$A\in\mathscr{G}$生成的基本矢量场$A^{*}$在$p$点的取值
+\begin{equation}
+    A^{*}_{p}=R_{p*}A
+\end{equation}
+
+另外，对于$x\in M$的开邻域$U$,取$S_U$在$\pi^{-1}[x]$上的限制$S_U\colon  \pi^{-1}[x]\to G$，其推前映射$S_{U*}$将基本矢量场$A^{*}$推前到$G$上得到由$A\in\mathscr{G}$生成的左不变矢量场$\Bar{A}$，满足
+\begin{equation}
+    \Bar{A}_{g}=S_{U*}A^{*}_{p}\;,\; \forall p\in\pi^{-1}[x]
+\end{equation}
+
+证明如下：
+\begin{equation}
+    LHS=L_{g*}A
+\end{equation}
+
+设$p=\breve{p}_{U}g$，则
+
+\begin{equation}
+    RHS=\left(S_U\circ R_{\breve{p}_U g}\right)_{*}A
+\end{equation}
+
+又因为显然$R_{\breve{p}_Ug}=R_{\breve{p}_U}\circ L_g$，因此$\left(S_U\circ R_{\breve{p}_U g}\right)_{*}=\left(L_g\right)_{*}$.得证。
+
+进而，生成元$A$可以为$\pi^{-1}[x]$定义过点$p$的单参子群$\phi_{p}(t)=p\exp{(tA)}$，且其为$A$生成的基本矢量场$A^{*}$的积分曲线。证明如下：
+
+由指数映射的性质，显然$\phi_{t}(p)$为$\pi^{-1}[x]$的单参子群。下面证明 \[A^{*}_{p\exp{(sA)}}=\frac{\mathrm{d}}{\mathrm{dt}}|_{t=s}\phi_{p}(t)\]
+
+\begin{equation}
+    \begin{split}
+        LHS
+        &=R_{p\exp{(sA)}*}\frac{\mathrm{d}}{\mathrm{dt}}|_{t=0}\exp{tA}\\
+        &=\frac{\mathrm{d}}{\mathrm{dt}}|_{t=0}p\exp{sA}\exp{tA}\\
+        &=\frac{\mathrm{d}}{\mathrm{dt}}|_{t=s}p\exp{tA}\\
+        &=\frac{\mathrm{d}}{\mathrm{dt}}|_{t=s}\phi_{p}(t)\\
+    \end{split}
+\end{equation}
+
+下面这个定理是显然的，因为左边是由$A$生成的$A_p^{*}$在$pg$点的推前，右边是$A$被$I_{g^{-1}}$的推前对应的基本矢量场在$pg$的取值。
+
+\begin{equation}
+    R_{g*}A_p^{*}=\left(\mathscr{A}d_{g^{-1}}A\right)^{*}_{pg}
+\end{equation}
+
+第一种证明如下：
+\begin{equation}
+    \begin{split}
+        RHS
+        &=R_{pg*}\frac{\mathrm{d}}{\mathrm{dt}}|_{t=0}g^{-1}\exp{tA}g\\
+        &=\frac{\mathrm{d}}{\mathrm{dt}}|_{t=0}p\exp{tA}g\\
+        &=R_{g*}A_{p}^{*}\\
+    \end{split}
+\end{equation}
+
+第二种证明如下：
+\begin{equation}
+    LHS=(R_p\circ R_g)_{*}A
+\end{equation}
+\begin{equation}
+    RHS=(R_{pg*}\circ I_{g^{-1}})_{*}A=(R_p\circ R_g)_{*}A
+\end{equation}
+
+下面这个定理表明：基本矢量场的对易子可以等于相应的李代数的推前。
+
+设$A,B\in\mathscr{G}$，$A^{*},B^{*}$为$P$上的基本矢量场。则
+\begin{equation}
+    [A,B]^{*}=[A^{*},B^{*}]
+\end{equation}
+
+证明如下：
+
+
+
+
+
+\subsection{Main Figure}
+
+
+\chapter{主丛上的联络}
+
+\section{主丛联络的三个等价定义}
+
+\subsection{定义一}
+
+要想谈及主丛$P$上的水平矢量场，就要给联络。
+
+对于主丛$P(M,G)$上的一个联络是指，对于每一个点$p\in P$，给定一个水平子空间$H_p\subset T_pP$, s.t
+\begin{itemize}
+    \item (a) $T_pP=V_p\oplus H_p$
+    \item (b) $H_{pg}=R_{g*}[H_p]$
+    \item (c) $H_p\;\forall p\in P$给出了一个$P$上的$C^{\infty}$的$n$维分布。
+\end{itemize}
+
+根据上一节的讨论我们知道，$p$点的竖直矢量场$V_p$与李代数$\mathscr{G}$同构，下面我们证明一个重要结论：$p$点的水平子空间与$T_x M$同构，一个自然的同构映射是投影映射$\pi\colon  P\to M$在$p$点的限制的推前映射$\pi_{*}\colon  H_{p}\to T_x M$。证明如下：
+
+首先注意到$\dim{H_p}=\dim{T_p P}-\dim{V_p}=\dim{M}+\dim{G}-\dim{\mathscr{G}}=\dim{M}=\dim{T_x M}$，因此只需要证明$\pi_{*}\colon  H_{p}\to T_x M$是一一的（也可以直接证明到上，用反证法）。理由如下：
+
+设$X,X'\in H_p$且$\pi_{*}X=\pi_{*}X'$，则$\pi_{*}(X-X')=0$，即$X-X'\in V_p\cap H_p$，因此$X=X'$.
+
+另外，$\text{定义一中的条件}\;(b)\Leftrightarrow R_{g*}H_p\subset H_{pg}$。证明如下：
+
+充分性显然。必要性如下：对于$\forall\;Y\in H_{pg}$，由于$R_{g^{-1}*}H_{pg}\in H_p$，因此$R_{g^{-1}*}Y\in H_p$。同理可得 $Y=R_{g*}R_{g^{-1}*}Y\in H_p$.即$H_{pg}\subset R_{g*}H_p $
+
+\subsection{定义二}
+
+定义二是给了一个$C^{\infty}$的$\mathscr{G}$的1形式场$\tilde{\mathrm{\omega}}$，借助它来定义水平矢量场。要想给定该1形式场，我们就需要对于每个点$p\in M$以及$\forall X\in T_{p} P$，定义 $\tilde{\mathrm{\omega}}_p(X)$的结果$A\in\mathscr{G}$。如果作用结果为零，就是水平矢量场。对于$p$点的竖直矢量$A^{*}_p$，一个自然的定义是$\tilde{\mathrm{\omega}}_p\left(A^{*}_{p}\right)=A$。对于任意的$p$点矢量$X\in T_p P$， 其定义应当不与作用于竖直矢量场的定义相矛盾。
+
+
+定义如下：
+主丛$P(M,G)$上的一个联络是指对于每个点$p$，指定一个$\mathscr{G}$的1形式$\tilde{\mathrm{\omega}}_p$,s.t.
+\begin{itemize}
+    \item (a) $\tilde{\omega}_{p}(A^{*}_p)=A$
+    \item (b) $\tilde{\omega}_{pg}\left(R_{g*}X\right)=\mathscr{A}d_{g^{-1}}\tilde{\omega}_{p}\left(X\right)\;,\;\forall p\in P, g\in G, X\in T_{p}P$
+\end{itemize}
+显然(a)与(b)不矛盾。
+
+直观上看，定义二与定义一有着很深的联系。对于任意的矢量$X\in T_{x} P$，$\pi_{*}X\in T_{x}M$ 相当于它在$T_x M$方向上的投影，$\tilde{\mathrm{\omega}}_p(X)\in\mathscr{G}$ 相当于$X$在$\mathscr{G}$方向上的投影。在$M$上的分量为0就相当于是竖直的，在$G$上的分量为0就相当于是水平的。
+
+下面我们证明一个引理：第二种定义中的条件(b)等价于
+\begin{equation}
+    \forall\;x\in M,\exists\;p_0\in\pi^{-1}[x]\;,\; \text{s.t.}\;\forall\;X\in T_p P\;\text{有}
+    \tilde{\mathscr{\omega}}_{p_0g}(R_{g*}X)=\mathscr{A}
+    d_{g^{-1}}\tilde{\mathscr{\omega}}_{p}(X)
+\end{equation}
+
+证明如下：充分性显然。必要性证明如下：$\forall\;p\in P$, 设$x=\pi(p)$，则$\exists\;p_0\in\pi^{-1}[x]\;,\;\text{s.t.}\;\tilde{\mathscr{\omega}}_{p_0g}(R_{g*}X)=\mathscr{A}d_{g^{-1}}\tilde{\mathscr{\omega}}_{p}(X)$.且$\exists\;h\in G$,s.t.$p=p_0h$.则
+
+\begin{equation}
+    \begin{split}
+        \tilde{\mathscr{\omega}}_{pg}(R_{g*}X)
+        &=\tilde{\mathscr{\omega}}_{p_0h g}(R_{g*}X)\\
+        &=\tilde{\mathscr{\omega}}_{p_0h g}(R_{\left(h^{-1}h g\right)*}X)\\
+        &=\tilde{\mathscr{\omega}}_{p_0h g}\left(R_{\left(h g\right)*}\left(R_{h^{-1}*}X\right)\right)\\
+        &=\mathscr{A}d_{(h g)^{-1}} \tilde{\mathscr{\omega}}_{p_0}\left(R_{h^{-1}*}X\right)\\         
+        &=\mathscr{A}d_{(h g)^{-1}} \tilde{\mathscr{\omega}}_{p_0}\left(R_{h^{-1}*}X\right)\\
+        &=\left(\mathscr{A}d_{g^{-1}}\circ\mathscr{A}d_{h^{-1}}\right) \left(\tilde{\mathscr{\omega}}_{p_0}\left(R_{h^{-1}*}X\right)\right)\\
+    \end{split}
+\end{equation}
+
+\begin{equation}
+    \begin{split}
+        \mathscr{A}d_{g^{-1}}\tilde{\mathscr{\omega}}_{p}(X)
+        &=\mathscr{A}d_{g^{-1}}\tilde{\mathscr{\omega}}_{p_0 h}(X)\\
+        &=\mathscr{A}d_{g^{-1}}\tilde{\mathscr{\omega}}_{p_0 h}(R_{h*}R_{h^{-1}*}X)\\
+        &=\mathscr{A}d_{g^{-1}}\mathscr{A}d_{h^{-1}}\tilde{\mathscr{\omega}}_{p_0}(R_{h^{-1}*}X)\\
+    \end{split}
+\end{equation}
+
+因此$\text{LHS}=\text{RHS}$。必要性得证。
+
+下面我们证明定义一与定义二等价。证明如下：
+
+(A) 设$\tilde{\mathrm{\omega}}$是定义二中的主丛$P(M,G)$上的联络。对于每个点$p\in P$,定义$T_p P$的子空间 \[H_{p}=\{X\in T_p P\colon \tilde{\mathrm{\omega}}_p(X)=0\}.\]
+
+(A1)证明$T_p P=V_p\oplus H_p$
+
+首先我们证明$T_p P=V_p+H_p$。对于$\forall X\in T_p P$, $\tilde{\mathscr{\omega}}_p(X)=A\in\mathscr{G}$,$A_p^{*}=R_{p*}A\in V_p$，记$X_H=X-A_p^{*}$，则
+\[\tilde{\mathscr{\omega}}_p(X_H)=\tilde{\mathscr{\omega}}_p(X)-\tilde{\mathscr{\omega}}_p(A_p^{*})=A-A=0\]
+即$X_H\in H_p$。
+
+接下来证明是直和，只需证明$V_p\cap H_p=\left\{0\right\}$
+设$A_p^{*}\in V_p\cap H_p$，则 $\tilde{\mathscr{\omega}}_p(A_p^*)=0=A$。因此$A_{p}^{*}=R_{p*}A=0$。
+
+(A2) 证明$H_{pg}=R_{g*}[H_p]$。
+
+由之前的讨论可知，只需证明$R_{g*}H_{p}\subset [H_{pg}]$.$\forall X\in H_{p}, R_{g*}X\in T_{pg}P$.
+\[\tilde{\mathscr{\omega}}_{pg}(R_{g*}X)=\tilde{\mathscr{\omega}}_{p}(X)=0.\]
+即$R_{g*}X\subset R_{g*}H_p$
+
+(A3)略
+
+(B) 下面我们证明一个水平矢量场可以给出一个$C^{\infty}$的$\mathscr{G}$值的$\mathrm{l}$形式场。
+
+由定义一\[\forall X\in T_p P,\exists!A\in\mathscr{G},X_H\in H_p,\;\text{s.t.}\;X=A_p^{*}+X_H\]
+
+定义$\tilde{\mathscr{\omega}}_p(X)=\tilde{\mathscr{\omega}}_p(A_{p}^{*})=A$。
+
+(B1) 显然满足
+
+(B2) 要证明$\tilde{\mathrm{\omega}}_{pg}(R_{g*}A_p^{*})=\mathscr{A}d_{g^{-1}}\tilde{\mathrm{\omega}}_p(A_p^{*})$。证明如下
+
+\begin{equation}
+    \begin{split}
+        LHS
+        &=\tilde{\mathrm{\omega}}_{pg}\left(R_{g*}A_{p}^{*}\right)\\
+        &=\tilde{\mathrm{\omega}}_{pg}\left(\mathscr{A}d_{g^{-1}}A^{*}_{pg}\right)\\
+        &=\mathscr{A}d_{g^{-1}}A^{*}\\
+        &=\mathscr{A}d_{g^{-1}}\tilde{\mathrm{\omega}}_p(A_p^{*})\\
+        &=RHS\\
+    \end{split}
+\end{equation}
+
+
+\subsection{定义三}
+
+注意到对于一个局域平凡$T_U$，它对应于一个局域截面$\sigma_U\colon  U\to P$。对应于一个$U$上的$\mathscr{G}$值$\mathrm{l}$形式场$\mathscr{\omega}_U=\sigma_U^*\tilde{\mathscr{\omega}}$
+
+
+定义对于主丛$P$上的一个局域平凡$T_U$，对应的一个$U\subset M$ 上的 $\mathscr{G}$值$\mathrm{l}$形式场$\mathscr{\omega}_U$可定义为$P$上的联络。若$x\in U\cap V$， 则$T_V$对应的$\mathscr{\omega}_V$满足
+
+\begin{equation}
+    \bm{\omega}_V(Y)=\mathscr{A}d_{g_{UV}(x)^{-1}}\mathrm{\omega}_U(Y)+L^{-1}_{g_{UV}(x)*}g_{UV*}(Y)
+\end{equation}
+
+上式子其实给出了不同坐标系下的矢量分量的变换。定义二与定义三等价性的证明见下一小节。我们首先对$G$为矩阵群的情形给出以下情形：
+
+\begin{equation}
+    \mathrm{\omega}_V=g_{UV}^{-1}\mathrm{\omega_{U}}g_{UV}+g_{UV}^{-1}d g_{UV}
+\end{equation}
+
+首先来理解一下这个式子：略
+
+理解了之后证明还是挺简单的。具体过程如下：
+
+对于任意矢量$Y\in T_x M$,由于$G=\mathrm{GL}(n)$是矩阵群，因此$\mathscr{A}d_{g_{UV}(x)^{-1}}\mathrm{\omega}_U(Y)=g_{UV}^{-1}\mathrm{\omega_{U}}g_{UV}(Y)$
+
+设曲线$\eta(t)$过点$p$，且在$p$点切矢为$Y$。则原来的式子第二项作用于$Y$得到
+\begin{equation}
+    LHS=g_{UV}^{-1}(x)\frac{\mathrm{d}}{\mathrm{dt}}|_{t=0}g_{UV}(\eta(t))
+\end{equation}
+
+考虑到$\frac{\mathrm{d}}{\mathrm{dt}}|_{t=0}g_{UV}(\eta(t))=e_r\frac{\mathrm{d}}{\mathrm{dt}}|_{t=0}f^{r}(\eta(t))=e_r(df^r)(Y)=\mathrm{dg}_{UV}(Y)$
+
+\subsection{定义二与定义三的等价性证明}
+本节证明定义二与定义三等价。
+
+\subsubsection{定义二推定义三}
+给定一个$P$上的光滑$\mathscr{G}$值的$\mathrm{l}$形式场$\tilde{\mathrm{\omega}}$以及两个截面$\sigma_U,\sigma_V$，考虑$\mathrm{l}$形式场的拉回$\mathrm{\omega}_V=\sigma_V^{*}\tilde{\mathrm{\omega}},\;\mathrm{\omega}_U=\sigma_U^{*}\tilde{\mathrm{\omega}}$.对于任意流形$M$上的$x$点的矢量$Y\in T_x M$，不妨设$\eta(t)$满足
+
+\begin{equation}
+    \begin{cases}
+        \eta(0)=x\\
+        \frac{\mathrm{d}}{\mathrm{dt}}|_{t=0}=Y
+    \end{cases}
+\end{equation}
+
+则只需证明满足公式
+\begin{equation*}
+    \mathscr{\omega}_V(Y)=\mathscr{A}d_{g_{UV}(x)^{-1}}\mathrm{\omega}_U(Y)+L^{-1}_{g_{UV}(x)*}g_{UV*}(Y) 
+\end{equation*}
+
+证明如下
+\begin{equation}
+    \begin{split}
+        LHS
+        &=\sigma_V^{*}\tilde{\mathrm{\omega}}(Y)
+         =\tilde{\mathrm{\omega}}(\sigma_{V*}Y)\\
+        &=\tilde{\mathrm{\omega}}\left(\frac{\mathrm{d}}{\mathrm{dt}}|_{t=0}\left(\sigma_{V}\left(\eta(t)\right)\right)\right)\\
+        &=\tilde{\mathrm{\omega}}\left(\frac{\mathrm{d}}{\mathrm{dt}}|_{t=0}\left(\sigma_{U}\left(\eta(t)\right)\right)g_{UV}\left(\eta(t)\right)\right)\\
+        &=\tilde{\mathrm{\omega}}\left(\frac{\mathrm{d}}{\mathrm{dt}}|_{t=0}\left(\sigma_{U}\left(x\right)\right)g_{UV}\left(\eta(t)\right)+\frac{\mathrm{d}}{\mathrm{dt}}|_{t=0}\left(\sigma_{U}\left(\eta(t)\right)\right)g_{UV}\left(x\right)\right)\\
+        &=\tilde{\mathrm{\omega}}\left(\frac{\mathrm{d}}{\mathrm{dt}}|_{t=0}\left(\sigma_{V}\left(x\right)L_{g_{UV}}(x)^{-1}\right)g_{UV}\left(\eta(t)\right)+R_{g_{UV}(x)*}\sigma_{U*}Y\right)\\
+        &=\tilde{\mathrm{\omega}}\left(\left(L_{g_{UV}}(x)^{-1}g_{UV}Y\right)^{*}_{\sigma_V(x)}+R_{g_{UV}(x)*}\sigma_{U*}Y\right)\\
+        &=L_{g_{UV}}(x)^{-1}g_{UV}(Y)+\mathscr{A}d_{g_{UV}(x)^{-1}}\tilde{\mathrm{\omega}}\sigma_{U*}(Y)\\
+        &=\mathscr{A}d_{g_{UV}(x)^{-1}}\mathrm{\omega}_U(Y)+L^{-1}_{g_{UV}(x)*}g_{UV*}(Y) \\
+    \end{split}    
+\end{equation}
+
+第五个等号是莱布尼茨律的结果。可对$P$赋予坐标系后严格证明。
+
+\subsubsection{定义三推定义二}
+下面我们考虑反向构造。
+
+设$\mathrm{\omega}_U$为对应于局域平凡$T_U$的光滑$\mathscr{G}$值的$\mathrm{l}$形式场。$\sigma_U$为与$T_U$对应的截面。证明分三步：
+
+第一步：构造$\pi^{-1}[U]$上的光滑$\mathscr{G}$值的$\mathrm{l}$形式场$\tilde{\mathrm{\omega}}^{U}$。
+
+具体地，我们需要对$\sigma[U]$上的每个点指定一个$\tilde{\mathrm{\omega}}^{U}_{p}$。分为两种情况：$p\in\sigma_U[U]$和$p\notin\sigma_U[U]$.
+
+对于$p\in\sigma_U[U]$, $\forall X\in T_p P$，令$Y=\pi_{*}X,Z=X-\sigma_{U*}Y$。则显然
+\begin{equation}
+    \pi_{*}Z=Y-Y=0
+\end{equation}
+
+即$Z\in V_p$，即 $\exists A\in\mathscr{A},\text{s.t.}Z=A_p^{*}$。因此，有
+\begin{equation}
+    X=A_{p}^{*}+\sigma_{U*}Y
+\end{equation}
+
+定义$\tilde{\mathrm{\omega}}^{U}_p$为
+\begin{equation}
+    \tilde{\mathrm{\omega}}^{U}_p(X)\colon =A+\tilde{\mathrm{\omega}}^{U}|_{\pi(p)}(Y)
+\end{equation}
+
+对于不在截面上的点$p'$,令$p=\sigma(\pi(p))$.设$p'=pg$，定义
+
+\begin{equation}
+    \tilde{\mathrm{\omega}}^{U}_{p'}(X')\colon =\mathscr{A}d_{g^{-1}}\tilde{\mathrm{\omega}}^{U}_p(R_{g^{-1}}X')\;\forall X'\in T_{p'}P\;
+\end{equation}
+
+第二步：证明$\tilde{\mathrm{\omega}}^{U}$满足定义二中的两个条件。（其中光滑性条件证明略）
+
+\begin{itemize}
+    \item (a) $\tilde{\mathrm{\omega}}^{U}_{p}(A^{*}_p)=A$
+    \begin{itemize}
+        \item (a1) 对于截面$\sigma[U]$上的点$p$，显然。
+        \item (a2) 对于不在截面$\sigma[U]$上的点$p'$，有
+        \begin{equation}
+            \begin{split}
+               \tilde{\mathrm{\omega}}^{U}_{pg}(A^{*}_{pg})&=\mathscr{A}d_{g^{-1}}\tilde{\mathrm{\omega}}^{U}_{p}(R_{g^{-1}*}A^{*}_p)\\
+               &=\mathscr{A}d_{g^{-1}}\tilde{\mathrm{\omega}}^{U}_{p}\left((\mathscr{A}d_{g}A)^{*}_{p}\right)\\
+               &=\mathscr{A}d_{g^{-1}}\mathscr{A}d_{g}A\\
+               &=A\\
+            \end{split}
+        \end{equation}
+    \end{itemize}
+    \item (b) 证明
+        \begin{equation}
+            \forall\;x\in M,\exists\;p_0\in\pi^{-1}[x]\;,\; \text{s.t.}\;
+            \tilde{\mathscr{\omega}}_{p_0g}(R_{g*}X)=\mathscr{A}
+            d_{g^{-1}}\tilde{\mathscr{\omega}}_{p}(X)
+        \end{equation}
+        证明如下：对于 $\forall x\in U\subset M$， 取 $p_0=\sigma(x)$则显然成立。
+\end{itemize}
+
+第三步：证明对于两个不同的局域平凡$T_U,T_V$($U\cap V\neq\emptyset$)给出的$\tilde{\mathrm{\omega}}^{U}_{p}$和$\tilde{\mathrm{\omega}}^{V}_p,\forall p\in\pi^{-1}[V\cap U]$相等。即$\tilde{\mathscr{\omega}}^{U}_{p}$是良定的。
+
+为了证明此事，我们首先说明：由$(B1)$构造的$\pi^{-1}[U]$上的满足定义二的$C^{\infty}\text{的}\;\mathscr{G}$值的$\mathrm{1}$形式场$\tilde{\mathrm{\omega}}^{U}$所诱导的开邻域$U\subset M$上的 $C^{\infty}\text{的}\;\mathscr{G}$ 值的 $\mathrm{1}$形式场 $\sigma_{U}^{*}\tilde{\mathrm{\omega}}^{U}$与定义三中原本的$U$上的 $C^{\infty}\text{的}\;\mathscr{G}$ 值的 $\mathrm{1}$形式场相等，即$\sigma_{U}^{*}\tilde{\mathrm{\omega}}^{U}=\mathrm{\omega}_U$.理由如下：$\forall Y\in T_{x}M$
+
+\begin{equation}
+    \sigma_{U}^{*}\tilde{\mathrm{\omega}}^{U}(Y)=\tilde{\mathrm{\omega}}^{U}(\sigma_{U*}(Y))=\tilde{\mathrm{\omega}}^{U}(0+\sigma_{U*}(Y))=\mathrm{\omega}_U|_{\pi(p)}(Y)
+\end{equation}
+
+下面我们先证明$\forall p'\in\sigma_{V}[V\cap U],\;\tilde{\mathrm{\omega}}^{U}_{p'}=\tilde{\mathrm{\omega}}^{V}_{p'}$。设$,p=\sigma_U(x),\;p'=\sigma_V(x)=pg_{UV}(x)\equiv pg$.为此只需证明$\forall p'=pg,\;X'\in T_{pg}P$ 有 \[ \tilde{\mathrm{\omega}}^{U}_{p'}(X')=\tilde{\mathrm{\omega}}^{V}_{p'}(X')\]
+
+由上述讨论可知$X'=A^{*}_{pg}+\sigma_{V*}Y$，且显然$\tilde{\mathrm{\omega}}^{V}_{p'}(A^{*}_{pg})=\tilde{\mathrm{\omega}}^{U}_{p'}(A^{*}_{pg})=A$。又根据$\sigma_{V*}(Y)$的表达式可得
+
+\begin{equation}
+    \begin{split}
+        \tilde{\mathrm{\omega}}^{U}_{p'}(\sigma_{V*}(Y))
+        &=\tilde{\mathrm{\omega}}^{U}_{pg}\left(\left(L_{g_{UV}}(x)^{-1}\sigma_{U*}Y\right)+R_{g_{UV}(x)*}\sigma_{U*}Y\right)\\
+        &=\mathscr{A}d_{g^{-1}}\tilde{\mathscr{\omega}}^{U}_p(\sigma_{U*}Y)+L^{-1}_{g_{UV(x)}*}g_{UV(x)*}(Y)\\
+        &=\tilde{\mathrm{\omega}}^{V}_{p'}(\sigma_{V*}(Y))\\
+    \end{split}    
+\end{equation}
+
+因此$\forall p'\in\sigma[U\cap V]$， 有$ \tilde{\mathrm{\omega}}^{U}_{p'}(X') =\tilde{\mathrm{\omega}}^{V}_{p'}(X')$
+
+对于不在$\sigma_V[U\cap V]$上的点，我们将其推前到$p'$ 点进行计算，显然二者结果仍然相同。
+
+
+\section{水平提升矢量场与水平提升曲线}
+
+给定主丛$P$上的联络，即给每个点$p$一个水平子空间$H_p$，$\pi_{*}\colon H_p\to T_x M$为同构映射。$\forall Y\in T_x M,\;\pi^{-1}_{*}Y\in H_p$。给定一个$M$上的 $C^{\infty}$ 矢量场$\Bar{Y}$,唯一存在一个$P$上的矢量场$\tilde{Y}$,s.t.
+\begin{itemize}
+    \item (a) $\tilde{Y}_p\in H_p$
+    \item (b) $\pi_{*}\tilde{Y}_p=\Bar{Y}_{\pi(p)}$
+\end{itemize}
+称$\tilde{Y}$为$P$上的水平提升矢量场。
+
+以下两个定理是直观的。
+
+对于任意的水平提升矢量场$\tilde{Y}$，$\tilde{Y}_p$的推前到$pg$点的值等于$\tilde{Y}_{pg}$
+
+\begin{equation}
+    R_{g*}\tilde{Y}_p=\tilde{Y}_{pg}
+\end{equation}
+
+证明如下：
+
+欲证明$0=R_{g*}\tilde{Y}_p-\tilde{Y}_{pg}\in H_{pg}$ 只需要证明$R_{g*}\tilde{Y}_p-\tilde{Y}_{pg}\in V_p$，即
+
+\begin{equation}
+    \pi_{*}\left(R_{g*}\tilde{Y}_p-\tilde{Y}_{pg}\right)=\left(\pi\circ R_p\right)_{*}\tilde{Y}_p-Y_{\pi(pg)}=Y_{\pi(p)}-Y_{\pi(pg)}=0
+\end{equation}
+
+下面证明水平矢量场与竖直矢量场可对易，即
+\begin{equation}
+    [A^{*},\tilde{Y}]=0
+\end{equation}
+证明如下：$\forall p\in P$
+
+\begin{equation}
+    \begin{split}
+        [A^{*},\tilde{Y}]_{p}
+        &=\left(\mathscr{L}_{A^*}\tilde{Y}\right)_p\\
+        &=\lim_{t\to0}{\left[\left(\phi_{-t*}\tilde{Y}\right)_p-\tilde{Y}_p\right]/t}\\
+        &=\lim_{t\to0}{\left[\left(R_{\exp{(-t A)}*}\tilde{Y}\right)_p-\tilde{Y}_p\right]/t}\\
+        &=\lim_{t\to0}{\left[\left(\tilde{Y}\right)_{p\exp{-tA}}-\tilde{Y}_p\right]/t}\\
+        &=0\\
+    \end{split}
+\end{equation}
+
+设$I\subset\mathbb{R}$，称$P$上的曲线$\tilde{\eta}\colon I\to P$为$M$上的曲线$\eta(t)$的水平提升曲线，若$\tilde{\eta}$在每点$p$的切矢都是水平矢量，且$\pi(\tilde{\eta(t)})=\eta(t)\;,\;\forall\;t\in\mathbb{R}$.
+
+可以证明：$\eta$的水平提升曲线存在且唯一（在不考虑重参数化的条件下）。具体而言，设$I=[0,1],\;x=\eta(0)$，则$\forall p\in\pi^{-1}[x],\;\exists!\;\text{水平提升曲线}\;\tilde{\eta}\;\text{s.t.}\;\tilde{\eta(t)}=0$
+
+另外还有$\tilde{\eta}\colon I\to P$是$\eta\colon I\to M$的水平提升曲线，则
+\begin{equation}
+    \tilde{\eta}^{'}\colon I\to P\;\text{为水平提升曲线}\Leftrightarrow\exists\;g\in G\;\text{s.t.}\;\tilde{\eta}^{'}(t)\equiv\tilde{\eta}(t)g
+\end{equation}
+
+证明如下：
+
+$\left(\Leftarrow\right)$ 
+
+首先$\tilde{\eta}(t)$投影显然为$\eta(t)$。并且$\tilde{\eta}(t)$在$t=s$处的切矢为$R_{g*}\tilde{Y}_{\tilde{\eta}(s)}=\tilde{Y}_{\eta(s)g}\in H_{\eta(s)g}$。
+
+$\left(\Rightarrow\right)$ 
+
+设$\tilde{\eta}^{'}$为$\eta(t)$的水平提升曲线，且$\tilde{\eta}'(t)$过点$p'$。令$p=\pi^{-1}([\pi(p')]\cap \tilde{\eta}[I])$，则$\exists\;g\in G\;\text{s.t.}\;p'=pg$. 又由于$\eta\;\text{的过点}\;p'\;\text{的水平提升曲线}$，因此易得$\tilde{\eta}'(t)=\tilde{\eta}(t)$
+
+
+\section{标架丛与流形$M$上的联络}
+
+对于一个流形$M$，选取其标架丛$\mathrm{FM}$，则一个标架丛上的联络可以给出一个底流形$M$上的联络（未必无挠），反之亦然。标架丛$\mathrm{FM}$上的联络称为线性联络。
+
+\subsection{证明}
+
+$(\Leftarrow)$ 首先我们假设流形$M$上存在联络$\nabla_a$，它给出一个曲线依赖的矢量平移法则。对于过点$x\in M$的一条曲线 $\eta\colon I\to M$，重参数化得到$\eta(0)=x$。设$T_x M$ 的基底为$\left\{e_{\mu}:\mu=1\dots n\right\}$. 将各个  $e_\mu$沿$\eta(t)$平移，得到$\eta[I]\subset M$ 上的一个局域矢量场$\left\{\Bar{e}_{\mu}:\mu=1\dots n\right\}$。对于标架丛$\mathrm{FM}$，$\tilde{\eta}(t)=(\eta[I],\left\{\Bar{e}_{\mu}:\mu=1\dots n\right\})\colon I\to \mathrm{FM}$是$\mathrm{FM}$上的一条曲线。满足$\tilde{\eta}(0)=p,\pi(\tilde{\eta}(t))=\eta(t)$。下面定义矢量空间
+
+\begin{equation}
+    H_p:=\left\{X\in T_p\mathrm{FM}:\exists M\;\text{上的曲线}\;\eta(t)\;\text{s.t.}\;x=\eta(0),X=\frac{\mathrm{d}}{\mathrm{dt}}|_{t=0}\tilde{\eta}(t)\right\}
+\end{equation}
+
+我们欲证明$H_p$是$T_p\mathrm{FM}$的竖直子空间，首先要证明它确实是一个子空间（见第三小节）。下面我们来证明它满足定义一的三个条件。
+
+\begin{itemize}
+    \item (a) 
+        \begin{itemize}
+            \item (a1) 首先我们证明$T_p\mathrm{FM}=V_p+ H_p$。证明如下：
+            
+            $\forall X\in T_p\mathrm{FM}$，$Y=\pi_{*}X$，$\eta(t)$为过点$x=\pi(p)$的，在$x$点切矢量为$Y$的一条曲线。   考虑由该曲线生成的$\mathrm{FM}$上的曲线$\tilde{\eta}(t)$，它在$t=0$的切矢为$X_2\in\mathrm{FM}$。令$X_1=X-X_2$.
+            
+            显然有
+            \begin{equation}
+                \pi_{*}X_1=\pi_{*}X-\pi_{*}X_2=Y - \pi_{*}(\frac{\mathrm{d}}{\mathrm{dt}}|_{t=0}\tilde{\eta}(t))=Y-Y=0  
+            \end{equation}
+            
+            \item (a2) 下面证明$T_p\mathrm{FM}=V_p\oplus H_p$
+            
+            只需要证明${0}=V_p\cap H_p$。
+            
+            $\forall v\in V_p,\pi_{*}(v)=0$。又因为$v\in H_p$，所以$\pi_{*}v=0$。因此$Y=0$.因此$v=0$。
+        \end{itemize}
+    \item (b) 证明$R_{g*} H_p=H_{pg}$
+    欲证明此，只需证明$R_{g*} H_p\subset H_{pg}$, 即证明对于任意的$M$上的沿曲线 $\eta\colon I\to M$平移的坐标基底场$\Bar{e}_{\mu}$，有$\Bar{e}_\nu g^{\nu}_{\mu}$也沿曲线$\eta$平移。由于$g^{\nu}_{\mu}$与$t$无关，因此由矢量平移方程显然成立。
+    \item (c)见第三小节。
+\end{itemize}
+
+$\left(\Rightarrow\right)$我们假设标架丛$\mathrm{FM}$上给定联络$\tilde{\bm{\omega}}$，要在$M$上诱导出联络$\nabla_a$。
+
+要定义算符$\nabla_a$，我们只需要定义它对$(k,l)$型张量场的作用。对于标量场$f$的作用$\nabla_a f:=(df)_a$，若给定了$\nabla_b v^{a}$ 的表达式，就可以根据与缩并可交换给出对对偶矢量场的作用的表达式。再根据莱布尼茨率就可以得到对任意$(k,l)$阶张量场的表达式，尽管未必无挠。下面我们定义导数算符对矢量场的作用。
+
+为此，对于$M$上的任意光滑矢量场$v^{a}$，我们定义在任意点$x_0$沿任意光滑矢量场$T^{a}$的协变导数$T^{b}\nabla_b v^a\equiv\nabla_{T}v$
+
+人为选取一条$M$上的曲线$\eta(t)\;\text{s.t.}\;\eta(0)=x_0,\frac{\mathrm{d}}{\mathrm{dt}}|_{t=0}\eta(t)=T$。挑选一条$\eta(t)$的水平提升$\tilde{\eta}(t)=(\eta(t),e_{\mu}|_{\eta(t)})$。将$v|_{\eta(t)}$用基底$e_{\mu}(t)$展开，即$v|_{\eta(t)}=e_{\mu}(t)v^{\mu}(t)$.其中$v^{\mu}(t)$是$M$上的标量场。
+
+\begin{equation}
+    \nabla_T v:=e_{\mu}(0)\frac{\mathrm{d}}{\mathrm{dt}}|_{t=0}v^{\mu}(t)
+\end{equation}
+
+这个协变导数的定义依赖于$\eta(t)$和$\tilde{\eta}(t)$的选取。我们来证明这个定义是良好的。
+
+首先证明对于不同的$\tilde{\eta}(t)$的选取$\nabla_T v$的结果不变。
+
+证明如下：设$\tilde{\eta}(t)=(\eta(t),e_{\mu}(t)),\tilde{\eta}'(t)=(\eta(t),e_{\nu}(t)g^{\nu}_{\mu})\equiv(\eta(t),e_{\nu}'(t))$。则
+
+\begin{equation}
+    \begin{split}
+        \nabla'_{T}v
+        &=e_{\mu}'(0)\frac{\mathrm{d}}{\mathrm{dt}}|_{t=0}v^{\mu'}(t)\\
+        &=e_{\nu}(0)g^{\nu}_{\;\;\mu}\frac{\mathrm{d}}{\mathrm{dt}}|_{t=0}v^{\mu}(t)(g^{\nu}_{\;\;\mu})^{-1}\\
+        &=e_{\mu}(0)\frac{\mathrm{d}}{\mathrm{dt}}|_{t=0}v^{\mu}(t)\\
+        &=\nabla_{T}v\\
+    \end{split}
+\end{equation}
+
+下面我们证明$\nabla_T v$与$\eta(t)$的选取无关。进一步的，我们证明
+
+\begin{equation}
+    \nabla_{b}(e_{\mu})^a=\omega^{\nu}_{\;\;\mu b}(e_{\nu})^a
+\end{equation}
+
+证明如下：
+
+首先我们注意到这是一个映射的等式，我们将其作用到$T^{b}$上，得到
+\begin{equation}
+    \nabla_{T}(e_\nu)^a=(e_\sigma)^a\omega^{\sigma}_{\;\;\nu b}T^{b}
+\end{equation}
+
+其中$T^b$是$M$上的某条曲线$\eta\colon I\to M$在$x_0$点的切矢。
+
+注意到上式子左边为
+\begin{equation}\label{eq:1:hyperlink}
+    LHS=e_{\mu}'(0)\frac{\mathrm{d}}{\mathrm{dt}}|_{t=0}h^{\mu}_{\;\;\nu}
+\end{equation}
+其中$h^{\mu}_{\;\;\nu}\in \mathrm{GL}(n)$为一个可逆矩阵，相当于由$T_U$ 给出的局域截面$\sigma$对应的$U$上的标架基底$e_{\mu}$在另外一个局域平凡$T_U'$给出的局域截面$\sigma'$对应的$U$上的另一个标架场$e_{\mu}'$上的分量。
+
+具体的有，$\exists\;g^{\nu}_{\mu}(x)\in G$,s.t.
+\begin{equation}
+    \sigma'(x)=(x,e_{\mu}'|_x)=(x,e_{\nu}|_x g^{\nu}_{\;\;\mu}(x))=R_{g^{\nu}_{\;\;\mu}(x)}\sigma(x)
+\end{equation}
+
+令$h^{\mu}_{\;\;\nu}=\left(g^{\mu}_{\;\;\nu}\right)^{-1}$，即得到$e'_{\mu}|_x=e_{\nu}|_x g^{\nu}_{\;\;\mu}(x),\;e_{\nu}|_x=e'_{\mu}|_x h^{\mu}_{\;\;\nu}(x)$。令$x=\eta(t)$，即得
+
+\begin{equation}
+    e_\nu(t)=e'_{\mu}(t)h^{\mu}_{\;\;\nu}(t)
+\end{equation}
+
+即有\eqref{eq:1:hyperlink}。注意到$0=\frac{\mathrm{d}}{\mathrm{dt}}|_{t=0}(h\circ g)$易得到
+
+\begin{equation}
+    \frac{\mathrm{d}}{\mathrm{dt}}|_{t=0}h^{\mu}_{\;\;\nu}(t)
+    =-h^{\mu}_{\;\;\sigma}(0)\frac{\mathrm{d}}{\mathrm{dt}}|_{t=0}g^{\sigma}_{\;\;\rho}(t)h^{\rho}_{\;\;\nu}(0)
+\end{equation}
+
+注意到$g^{\sigma}_{\;\;\rho}=g_{UV}\colon U\cap V\to G\subset\mathscr{V}$，其中$\mathscr{V}=\left\{\text{所有}\;N\times N\;\text{矩阵}\right\}$为一个矢量空间，因此$g^{\sigma}_{\;\;\rho}\in\Lambda(0,\mathscr{V}),(dg)^{\sigma}_{\;\;\rho a}\in\Lambda(1,\mathscr{V})$。因此
+
+\begin{equation}
+    \frac{\mathrm{d}}{\mathrm{dt}}|_{t=0}g^{\sigma}_{\;\;\rho}(t)=T^{a}(dg)^{\sigma}_{\;\;\rho a}=\mathrm{d}g^{\sigma}_{\;\;\rho}(T)
+\end{equation}
+
+因此
+
+\begin{equation}
+    \begin{split}
+        \nabla_{T}(e_\mu)^a
+        &=-e'_\mu(0)h^{\mu}_{\;\;\sigma}(0)\frac{\mathrm{d}}{\mathrm{dt}}|_{t=0}g^{\sigma}_{\;\;\rho}(t)h^{\rho}_{\;\;\nu}(0)\\
+        &=-e_{\sigma}(0)[dg(T)h(0)]^{\sigma}_{\nu}
+    \end{split}
+\end{equation}
+
+下面计算$dg(T)$。
+
+设$\bm{\omega}'=\sigma'^{*}\tilde{\bm{\omega}}$，则由联络定义三可知
+
+\begin{equation}
+    \bm{\omega}'=g^{-1}\bm{\omega}g+g^{-1}\mathrm{d}g
+\end{equation}
+
+将上式两边作用于$T$，得到
+
+\begin{equation}
+    \bm{\omega}'(T)=g(x_0)^{-1}\bm{\omega}(T)g(x_0)+g(x_0)^{-1}\mathrm{d}g(T)
+\end{equation}
+
+到目前为止，我们还没有对$\sigma'$作出任何限制。为了便于计算，我们任取一个$\eta(t)$的水平提升曲线$\tilde{\eta}(t)$，我们取截面$\sigma'$满足$\sigma'[\eta(t)]=\tilde{\eta}(t)$。即$\tilde{\eta}=\sigma'\circ\eta$.显然$\bm{\omega}'(T)=0$。
+
+因此得到
+\begin{equation}
+    \mathrm{d}g(T)(g(x_0))^{-1}=[dg(T)h(0)]=-\bm{\omega}(T)
+\end{equation}
+
+因此$\nabla_T v=e_\sigma(0)\bm{\omega}(T)$，即$\nabla v=e_\sigma(0)\bm{\omega}$。
+
+\subsection{补充证明}
+
+\subsubsection{$H_p\;\text{是}\;T_p\mathrm{FM}$的子空间}
+
+首先显然有$H_p\subset T_p\mathrm{FM}$.
+
+设$M$上有局域坐标系$(O,x_\mu)$，曲线$\eta(t)\in O$。$\Bar{e}^{\nu}_{\;\;\mu}$为$\Bar{e}_\mu$ 在坐标基底下的分量，即$\Bar{e}^{\nu}_{\mu}=\Bar{e}_\mu(\mathrm{dx}^\nu)$.则$\Bar{e}_\mu$沿曲线$\eta(t)$的平移满足
+
+\begin{equation}
+    \frac{\mathrm{d}\Bar{e}^{\nu}_{\mu}}{\mathrm{dt}}+\Gamma^{\nu}_{\;\;\rho\sigma}(\eta(t))\frac{\mathrm{dx}^{\rho}(\eta(t))}{\mathrm{dt}}\Bar{e}^{\sigma}_{\;\;\mu}(\eta(t))=0
+\end{equation}
+
+考虑$\eta(t)$的水平提升$\tilde{\eta}(t)$的切矢，在坐标系$(x_\mu,y^{\nu}_{\;\;\mu})$下的展开
+
+\begin{equation}
+    \frac{\mathrm{d}\tilde{\eta}(t)}{\mathrm{dt}}=\frac{\mathrm{dx}^{\mu}(\eta(t))}{\mathrm{dt}}\left(\frac{\partial}{\partial x^\mu}-\Gamma^{\nu}_{\;\;\mu\sigma}y^{\sigma}_{\;\;\tau}\frac{\partial}{\partial y^{\nu}_{\tau}}\right)\equiv\frac{\mathrm{dx}^{\rho}(\eta(t))}{\mathrm{dt}} E_\mu
+\end{equation}
+
+取$x^{\mu}$的坐标线为$\eta(t)$，则
+
+\begin{equation}
+    \frac{\mathrm{d}\tilde{\eta}(t)}{\mathrm{dt}}=E_\mu
+\end{equation}
+
+即说明$E_\mu\in H_p$。
+
+下面我们来证明$E_\mu$构成$H_p$的一组基底。显然$E_\mu$线性无关。欲证明构成基底，就要证明任意线性组合$\alpha^{\mu}E_\mu\in H_p$。证明如下：
+
+首先我们说
+
+\begin{equation}
+    \frac{\mathrm{d}\eta(t)}{\mathrm{dt}}=\frac{\mathrm{dx}^{\rho}(\eta(t))}{\mathrm{dt}}\frac{\partial}{\partial x^{\mu}}
+\end{equation}
+
+即$\eta(t)$切矢量的坐标分量与$\tilde{\eta}(t)$按$E_mu$展开的分量相同。
+
+设$M$上的一个曲线$\gamma(t)$，过$x_0$且在改点切矢量为\[\pi_{*}(\alpha^{\mu}E_\mu)=\alpha^{\mu}\pi_*(E_\mu)=\alpha^{\mu}\frac{\partial}{\partial x^{\mu}}\]
+
+因此
+\begin{equation}
+    \frac{\mathrm{d}}{\mathrm{dt}}|_{t=0}\tilde{\eta(t)}=\alpha^{\mu}E_\mu
+\end{equation}
+
+因此$\alpha^{\mu}E_\mu\in H_p$
+
+
+
+\subsubsection{$H_p$对$p$的依赖光滑}
+
+由上面讨论可知，基底场为$E_\mu=\left(\frac{\partial}{\partial x^\mu}-\Gamma^{\nu}_{\;\;\mu\sigma}y^{\sigma}_{\;\;\tau}\frac{\partial}{\partial y^{\nu}_{\tau}}\right)$，它是$n$个光滑的局域矢量场，因此$H_p$光滑的依赖于$p$。
+
+\subsection{讨论}
+
+下面从纤维丛的角度来回顾利用非坐标标架计算曲率。
+\begin{itemize}
+    \item (a) $\mathrm{FM}$上的一个联络$\tilde{\bm{\omega}}$给出$M$上的一个联络$\nabla_a$
+    \item (b) $\mathrm{FM}$上的一个截面$\sigma$就给出一组基底场$\left\{(e_{\mu}^a)\right\}$
+    \item (c) 在流形$M$上，$(\nabla_a,\left\{(e_{\mu}^a)\right\})$给出$n\times n$个联络1形式；而$\mathrm{FM}$上的$(\tilde{\bm{\omega}},\sigma)$给出$\bm{\sigma}\in \Lambda(1,\mathscr{G})$，配上坐标基矢量后得到 $\omega_{\tau}(x)$是一个$n\times n$矩阵，记为 $\omega^{\nu}_{\;\;\mu\tau}(x)$，配上基底后构成$n\times n$个1形式。 不难证明，除去一些无关紧要的符号问题，二者殊途同归。
+\end{itemize}
+
+\section{主丛上的曲率}
+
+\subsection{阶化李代数}
+
+设$\bm{\phi}\in\Gamma_k(i.\mathscr{G}),\bm{\psi}\in\Gamma_k(j,\mathscr{G})$，则定义括号$[\bm{\phi},\bm{\psi}]\in\Gamma_K(i+j,\mathscr{G})$为
+
+\begin{equation}
+    [\bm{\phi},\bm{\psi}](X_1,\dots,X_{i+j}):=\frac{1}{i!j!}\sum_{\pi}\delta_\pi[\bm{\phi}(X_{\pi(1)},\dots,X_{\pi(i)}),\bm{\psi}(X_{\pi(i+1)},\dots,X_{\pi(i+j)})]
+\end{equation}
+
+其中$X_i$是流形$K$上的任意矢量场，右边的括号是$\mathscr{G}$的李括号。一般的$[\bm{\omega},\bm{\omega}]\neq0$
+
+由于$\bm{\phi}=e_r\bm{\phi}^r$，即可以拆成$R$项之和。下面我们讨论$A\alpha$的形式，其中$A\in\mathscr{G},\alpha\in\Gamma_K(i,\mathbb{R})$。则显然有
+
+\begin{equation}
+    [A\alpha,B\beta]=[A,B](\alpha\wedge\beta)
+\end{equation}
+
+流形$K$上的全体$\mathscr{G}$值的形式场的集合配以该括号构成阶化李代数。且显然有
+
+\begin{equation}
+    [\bm{\phi},\bm{\psi}]=-(-1)^{i+j}[\bm{\psi},\bm{\phi}]
+\end{equation}
+
+\begin{equation}
+    (-1)^{i k}[[\bm{\phi},\bm{\psi}],\bm{\rho}]+(-1)^{ij}[[\bm{\psi},\bm{\rho}],\bm{\phi}]+(-1)^{kj}[[\bm{\rho},\bm{\phi}],\bm{\psi}]=0
+\end{equation}
+
+下面我们证明：
+
+\begin{equation}
+    d[\bm{\phi},\bm{\psi}]=[d\bm{\phi},\bm{\psi}]+(-1)^j[\bm{\phi},d\bm{\psi}]
+\end{equation}
+
+只需证明\[d(\alpha\wedge\beta)=(d\alpha\wedge\beta)+(-1)^i\alpha\wedge d\beta\]根据定义显然。
+
+且有
+
+\begin{equation}
+    \begin{split}
+        &f^{*}[\bm{\psi},\bm{\phi}]=[f^{*}\bm{\psi},f^{*}\bm{\phi}]\\
+        &d(f^{*}\bm{\phi})=f^{*}(d\bm{\phi})\\
+    \end{split}
+\end{equation}
+
+\subsection{一般情形}
+
+设主丛$P(M,G)$上带有联络$\tilde{\bm{\omega}}$，则
+
+\begin{itemize}
+    \item (a) $\forall\bm{\phi}\in\Lambda_P(i,\mathscr{G})$，定义$\bm{\phi}^H\in\Lambda_P(i,\mathscr{G})$为
+    \begin{equation}
+        \bm{\phi}^H(X_1,\dots,X_i):=\phi(X_1^H,\dots,X_i^H)
+    \end{equation}
+    其中$X_i^H$是与$X_i$对应的水平分量。
+    \item (b) $\bm{\phi}\in\Lambda_P(i,\mathscr{G})$，定义协变外微分$D\bm{\phi}:=(d\phi)^H$
+    \item (c) 联络$\tilde{\bm{\omega}}$相应的曲率$\tilde{\Omega}:=D\title{\omega}\equiv (d\bm{\omega})^H\in \Lambda_P(2,\mathscr{G})$
+\end{itemize}
+
+定理：嘉当第二结构方程
+\begin{equation}
+    \tilde{\bm{\Omega}}=d\tilde{\omega}+\frac{1}{2}[\tilde{\omega},\tilde{\omega}]
+\end{equation}
+
+同样的，我们有比安琪恒等式
+\begin{equation}
+    D\tilde{\Omega}=0
+\end{equation}
+
+即要证明
+\begin{equation}
+    \begin{split}
+        0=D\tilde{\Omega}(X,Y,Z)=(d\tilde{\Omega})(X^H,Y^H,Z^H)
+    \end{split}
+\end{equation}
+
+由于
+\begin{equation}
+\begin{split}
+    (d\tilde{\Omega})
+    &=\frac{1}{2}d([\tilde{\omega},\tilde{\omega}])\\
+    &=[d\tilde{\omega},\tilde{\omega}]\\
+\end{split}
+\end{equation}
+
+注意到$\tilde{\omega}|_{p}=0,\;\forall\;p\in P$，因此$D\tilde{\Omega}=0$
+
+根据上述证明我们知道$d\tilde{\Omega}=[d \tilde{\omega},\tilde{\omega}]=[\tilde{\Omega},\tilde{\omega}]$。
+
+
+利用曲率二形式$\tilde{\bm{\Omega}}$结合截面$\sigma_U$可以定义$U\subset M$上的曲率二形式
+
+\begin{equation}
+    \bm{\Omega}_U=\sigma_U^{*}\tilde{\bm{\Omega}}
+\end{equation}
+
+显然$\bm{\Omega}_U$满足嘉当第二方程。下面考虑$\bm{\Omega}_U$对截面选取的依赖关系。
+
+首先我们有
+
+\begin{equation}
+    R_g^{*}\tilde{\bm{\omega}}=\mathscr{A}d_{g^{-1}}\tilde{\bm{\omega}}
+\end{equation}
+
+证明如下：作用于矢量$Y$
+\begin{equation}
+    \begin{split}
+        RHS
+        &=\mathscr{A}d_{g^{-1}}\tilde{\bm{\omega}}_p(Y)\\
+        &=\tilde{\bm{\omega}}_{pg}(R_{g*}Y)\\
+        &=R_g^{*}\tilde{\bm{\omega}}_{pg}(Y)\\
+        &=LHS\\
+    \end{split}
+\end{equation}
+
+进一步的，易证明
+
+\begin{equation}
+    R_g^{*}\tilde{\bm{\Omega}}=\mathscr{A}d_{g^{-1}}\tilde{\bm{\Omega}}
+\end{equation}
+
+对于两个局域平凡，转换函数$g_{UV}\colon U\cap V\to G$，有
+
+\begin{equation}
+    \Omega_V=\mathscr{A}d_{g_{UV}^{-1}}\Omega_U
+\end{equation}
+
+证明如下：将左边作用于(X,Y)得到（注意到$\tilde{\bm{\Omega}}$作用到竖直矢量场上的结果为0）
+
+\begin{equation}
+    \begin{split}
+        LHS
+        &=\tilde{\bm{\Omega}}(\sigma_{V*}X,\sigma_{V*}Y)\\
+        &=\tilde{\bm{\Omega}}(R_{g*}\sigma_{U*}X,R_{g*}\sigma_{U*}Y)\\
+        &=\mathscr{A}d_{g^{-1}}\sigma_U^{*}\tilde{\Omega}(X,Y)\\
+        &=\mathscr{A}d_{g^{-1}}\tilde{\Omega}_{U}(X,Y)\\
+    \end{split}
+\end{equation}
+
+
+\subsection{矩阵群情形}
+
+本节对矩阵李群情形做一些讨论。    
+
+首先定义流形$K$上$\mathscr{G}$值形式场的楔积,$\mathscr{G}\subset\mathscr{GL}(n)$：设$\bm{\phi}\in\Lambda_K(i,\mathscr{G}),\bm{\psi}\in\Lambda_K(j,\mathscr{G})$，楔积$\phi\wedge\psi\in\Lambda_K\left(i+j,\mathscr{GL}(N)\right)$定义为
+
+\begin{equation}
+    \bm{\phi}\wedge\bm{\psi}:=e_r e_s(\phi^r\wedge\psi^s)
+\end{equation}
+其中$e_r$为$\mathscr{G}$的基底。
+
+其各个矩阵元为对应矩阵的楔乘积。
+
+对于矩阵李代数$\mathscr{G}$，$\bm{\phi}\in\Lambda_K(i,\mathscr{G}),\bm{\psi}\in\Lambda_K(j,\mathscr{G})$，有
+
+\begin{equation}
+    [\phi,\psi]=\phi\wedge\psi-(-1)^{i j}\psi\wedge\phi
+\end{equation}
+
+证明如下：
+
+\begin{equation}
+    \begin{split}
+        RHS
+        &=e_r e_s(\phi^r\wedge\psi^s)-e_s e_r(\phi^r\wedge\psi^s)\\
+        &=[e_r,e_s](\phi^r\wedge\psi^s)\\
+        &=[(\phi^re_r,\psi^se_s]\\
+        &=[\phi,\psi]\\
+    \end{split}
+\end{equation}
+
+
+由此，显然
+\begin{equation}
+    \begin{split}
+        &\tilde{\bm{\Omega}}=\mathrm{d}\tilde{\bm{\omega}}+\tilde{\bm{\omega}}\wedge\tilde{\bm{\omega}}\\
+        &\tilde{\bm{\Omega}}_U=\mathrm{d}\tilde{\bm{\omega}}_U+\tilde{\bm{\omega}}_U\wedge\tilde{\bm{\omega}}_U\\
+    \end{split}
+\end{equation}
+
+同时，$\tilde{\bm{\Omega}}_U$满足变换
+
+\begin{equation}
+    \tilde{\bm{\Omega}}_V=g_{UV}^{-1}\tilde{\bm{\Omega}}_U g_{UV}
+\end{equation}
+
+
+\subsection{线性联络的曲率与挠率}
+
+对于线性联络，给定截面后得到一个截面依赖的$\mathscr{G}$值2形式场$\bm{\Omega}_U$。由于结构群为矩阵群，因此$\bm{\Omega}_U\equiv\bm{\Omega}$可以表示成一个$N\times N$矩阵，每个矩阵元$\bm{\Omega}^{\nu}_{\;\;\mu}$ 为一个实值2形式场。 类似于之前联络1形式的讨论，$\bm{\Omega}^{\nu}_{\;\;\mu}=-\bm{R}_{\mu}^{\;\;\nu}$。因此
+\[\tilde{\bm{\Omega}}_U=\mathrm{d}\tilde{\bm{\omega}}_U+\tilde{\bm{\omega}}_U\wedge\tilde{\bm{\omega}}_U\\\]就是嘉当第二方程的一般形式。
+
+对于一般情形，联络有挠，嘉当第一方程要加上一个挠率项。具体讨论如下：
+
+首先给定$\mathrm{FM}$上的一个点$p=(x,e_\mu)$，存在一个映射$P\colon\mathbb{R}^n\to T_x M$
+\begin{equation}
+    P(v^1,\dots,v^n)=e_\mu v^\mu\in T_x M
+\end{equation}
+
+定义$\mathrm{FM}$上的正则形式$\tilde{\bm{\theta}}$为其上的$\mathbb{R}^n$值1形式场
+\begin{equation}
+    \tilde{\bm{\theta}}_p(X)=P^{-1}(\pi_*X),\;\forall\;X\in T_x M
+\end{equation}
+
+定义联络$\tilde{\bm{\omega}}$对应的$\mathbb{R}^n$值挠率2形式为$\tilde{\bm{\Theta}}:=\mathrm{D}\tilde{\bm{\theta}}$
+
+我们有嘉当第一结构方程
+\begin{equation}
+    \mathrm{d}\tilde{\bm{\theta}}=-\left[\tilde{\bm{\omega}},\tilde{\bm{\theta}}\right]+\tilde{\bm{\Theta}}
+\end{equation}
+
+为一个$n\times1$的矩阵等式。
+
+给定$U$上的一个截面$\sigma_U\equiv\sigma$，则可以给出$\bm{\theta}=\sigma^{*}\tilde{\bm{\theta}},\bm{\Theta}=\sigma^{*}\tilde{\bm{\Theta}}$.
+
+则
+
+\begin{equation}
+    \mathrm{d}\bm{\theta}^{\nu}=-\bm{\omega}^{\nu}_{\;\;\mu}\wedge\bm{\theta}^{\mu}+\bm{\Theta}^{\nu}
+\end{equation}
+
+对于无挠联络
+\begin{equation}
+    \mathrm{d}\bm{\theta}^{\nu}=-\bm{\theta}^{\mu}\wedge\bm{\omega}^{\;\;\nu}_{\mu}
+\end{equation}
+
+下面我们只要说明$\bm{\theta}^\mu=\bm{e}^\mu$即可说明上式可以退回之前的情形。
+
+证明显然。
+
+
+\chapter{伴丛}
+
+\section{定义与说明}
+
+\subsection{引入}
+
+对于主丛$P(M,G)$，给定一流形$F$，定义存在$G$对$F$的左作用$\chi\colon G\times F\to\;F$，与$G$对$P$上的自由右作用结合得到$P\times F$上的自由右作用$\xi\colon(P\times F\times G\to P\times F$
+\begin{equation}
+    \xi_{g}(p,f):=(pg,g^{-1}f)
+\end{equation}
+
+由$R$的自由性可知$\xi$自由。
+
+在$P\times F$上定义等价关系$\sim$：两点等价当且仅当二者属于$\xi$的同一条轨道。定义$Q:=(P\times F)/\sim$
+
+$\forall\;q\in Q,\text{记}q=(p,f)\equiv p\cdot f$,显然$pg\cdot f=p\cdot g f$。显然，对于给定的$p$，唯一存在$f\in F\;\text{s.t.}\;q=pf$，反之则不然。
+
+\subsection{$Q$是伴丛}
+
+定义自然的投影映射$\tau\colon P\times F\to P$：
+\begin{equation}
+    \tau(p,f):=p\cdot f\in Q 
+\end{equation}
+
+要想使得$Q$为流形，即要定义映射使得其他空间上的拓扑、流形结构可以被带到$Q$上。
+
+首先是拓扑结构$\hat{\tau}\colon P\times F\to Q$
+\begin{equation}
+    \hat{\tau}(p.f)=p\cdot f
+\end{equation}
+
+定义$Q$中的集合为开，当且仅当其逆像集开。因此$\hat{\tau}$连续。
+
+然后是微分结构，$\hat{\pi}\colon Q\to M$
+\begin{equation}
+    \hat{\pi}(q):=\pi(p)\in M
+\end{equation}
+
+类似于$P$上的局域平凡$T_U$，$Q$上也存在局域平凡$\hat{T}_U\colon\pi^{-1}[U]\to U\times F$
+\begin{equation}
+    \hat{T}_U(q)=(\hat{\pi}(q),\breve{f}_U)
+\end{equation}
+其中$\breve{f}_U$为$q$点对应于$\tilde{T}_U$特殊点$\breve{p}_U$的$f\in F$。此定义下的$\hat{T}_U\colon\pi^{-1}[U]\to U\times F$为微分同胚。
+
+称$Q$配以上述结构为主丛$P(M,G)$的伴丛。记$Q=(P\times F)/ \sim$。注意到对于任意$x\in M$， $\pi^{-1}[x]$与$G$同构，$\hat{\pi}^{-1}[x]$与$F$同构，因此流形$F$称为伴丛的典型纤维。主丛$P$的一个局域$T_U$给出伴丛的一个局域平凡$\hat{T}_V\colon\hat{\pi}^{-1}[U]\to U\times F$。对于两个$p$的开邻域$U,V$，在$\hat{\pi}^{-1}[U\cap V]$上存在坐标变换
+\begin{equation}
+    \breve{f}_U=g_{UV}(x)\breve{f}_V
+\end{equation}
+
+定义伴丛$Q$的局域截面$\hat{\sigma}\colon U\to Q\;\text{s.t.}\;\hat{\sigma}(\hat{\pi}(x))=x,\;\forall\;x\in U$
+
+实际上，要想定义主丛$P(M,G)$的伴丛，只需要给定流形$F$作为典型纤维，同时给出$G$对$F$的左作用。
+
+
+\section{例子}
+
+\subsection{任意主丛}
+对于主丛$P(M,G)$，取典型纤维$F=G$，且左作用$\chi_g(h):=gh.\;\forall\;g,h\in G$。
+
+可以证明此时伴丛与主丛微分同胚。存在微分同胚映射$v\colon Q\to P:v(q):=pg\in P$
+
+即任意主丛都是自己的伴丛。
+
+\subsection{平凡左作用}
+
+考虑平凡主丛$S^1(S^1,\mathbb{Z}_2)$。典型纤维取为$\mathbb{R}$，平凡左作用$\chi_e(f)=\chi_h(f)=f$。生成$P\times F$上的自由右作用，其轨道过$(p_\theta,f)\;\text{和}(p_{\theta+\pi},f)$两点，将其认同。
+
+\subsection{莫比乌斯带}
+
+\subsection{切丛}
+
+主丛$\mathrm{FM}$，典型纤维$\mathbb{R}^n$。左作用
+\begin{equation}
+    (\chi_g(f))^\mu=g^{\mu}_{\;\;\nu}f^\nu
+\end{equation}
+
+设$p\equiv(x,e_\mu,f^\nu)$与$p'\equiv(x,e'_\mu,f^{\nu'})$点分别带有一个矢量$v \equiv e_\mu f^{\mu},v'\equiv e_\nu'f^{\nu'}$。则$v=v'\Leftrightarrow p\;\text{与}\;p'\;\text{共轨道}$。即$\hat{\pi}^{-1}[x]$与$T_x M$之间一一对应。
+因此$Q=\cup_x{T_x M}=TM$
+
+\subsection{余切丛}
+
+类似的，$P=\mathrm{FM},F=(\mathbb{R}^n)^*$。$\forall\;f\in\mathrm{F}$，分量为$f_\mu$。每个点带有一个自然的对偶矢量$\beta=e^\mu f_\mu$。 两个点所携带的自然的对偶矢量相等，当且仅当二者共轨道。则$Q=T^* M$
+
+\subsection{$(k,l)$型张量丛}
+
+与切丛、余切丛的构造相同。
+
+\subsection{（伴）矢丛}
+
+实际上$G$在$F$上的左作用给出了李变换群$\hat{G}:\{\chi_g\colon F\to F:g\in G\}$，与结构群$G$同态。若 $F$ 为矢量 空间，且$\chi_g$线性，则$\hat{G}$为$G$的一个表示，表示空间为$F$，此时称伴丛$Q$为（伴）矢丛。
+
+对于伴矢丛$Q$，每一条纤维$\hat{\pi}^{-1}[x]$都构成一个域$\mathbb{R}$或$\mathbb{C}$上的矢量空间。理由如下：$\forall q=p\cdot f,q'=p\cdot f'$，定义加法、数乘如下：
+
+\begin{equation}
+    \begin{split}
+        & q+q'=p\cdot(f+f')\\
+        & \alpha q=p\cdot(\alpha f)
+    \end{split}
+\end{equation}
+
+零元$0=p\cdot0\in\hat{\pi}^{-1}[x]$。因此$\hat{\pi}^{-1}[x]$构成矢量空间，且与$F$同构。
+
+同时注意到$Q$的每一条纤维都有一个自然的零元，且所有的零元构成$Q$的一个整体截面---零截面。
+
+
+
+\chapter{矢丛上的联络与协变导数}
+
+\section{联络}
+
+对于矢丛$Q$，通过引入联络可以定义$T_q Q$的水平子空间$H_q$。考虑到每一个纤维都是一个矢量空间， 因此存在映射$\xi_c\colon\hat{\pi}^{-1}[x]\to\hat{\pi}^{-1}[x]$，定义为$\xi_c(q):=c q$， 因此$\xi_c$为一个微分同胚。
+
+定义联络：$H_p\subset T_q Q$满足
+
+\begin{enumerate}
+    \item[a] $T_q Q=V_p\oplus H_q$
+    \item[b] $\xi_{c*}[H_q]=H_{c q}$
+    \item[c] $H_q$光滑的依赖于$q$
+\end{enumerate}
+
+记$X^V$为$X\in T_q Q$的竖直分量，下面证明
+
+\begin{e   quation}
+    (c_1 X_1+c_2 X_2)^V=c_1 X_1^V+c_2 X_2^V
+\end{equation}
+
+证明如下：
+
+同样的，可以定义矢丛$Q$上的水平提升曲线。且过给定点$q$的水平提升曲线存在且唯一。
+
+\section{协变导数}
+
+
+
+\part{纤维丛与规范场}
+
+\chapter{截面的物理意义}
+
+首先我们考虑平凡主丛$P=\mathbb{R}^4\times G$，自由右作用
+\begin{equation}
+    R_g(x,h):=(x,h g)
+\end{equation}
+
+主丛上有两个整体截面$\sigma,\sigma'$，存在群元场$g(x)\;\text{s.t}\;\sigma'(x)=\sigma(x)g(x)^{-1}$
+
+
+利用该群元场，我们尝试构造一个粒子场$\phi(x)\in V$ 的局域规范变换 $\phi(x)\to\phi'(x)$。 利用规范理论中内部对称群$G$的表示群$\hat{G}$的群元场$U(x)=\rho(g(x))\in\mathrm{\hat{G}}$可以构造
+
+\begin{equation}
+    \phi'(x)=U(x)\phi(x)
+\end{equation}
+
+加上伴丛：典型纤维$F=V$，左作用
+\begin{equation}
+    \chi_g(f):=\rho(g)f
+\end{equation}
+则得到矢丛$Q$。
+
+对于主丛上的截面$\sigma(x)\subset P$，与$\mathbb{R}^4$上的一个$F$值0形式场$f$结合构成$Q$上的一个截面
+
+\begin{equation}
+    \Phi(x)=\sigma(x)\cdot f(x)
+\end{equation}
+
+对于一个局域截面变换$\sigma\to\sigma'$，给出一个群元场$g(x)\colon U\to G$。给定一个$U$上的$F$值函数$f(x)$， 用$g(x)$左作用上去得到$f'(x)$，则有两个$Q$上的局域截面$\Phi,\Phi'$。显然$\Phi=\Phi'$。因此不妨把伴矢丛上的局域截面$\Phi(x)$称为粒子场，主丛上的局域截面$\sigma$的选择为规范选择，相当于是内部标架。而之前物理上所谓的粒子场$\phi$不过是粒子场$\Phi$的分量。
+
+\chapter{规范势与联络}
+
+定义$\omega_\mu(x)=k e_r A^r_\mu(x)\in\mathscr{G}$，其中$e_r$为$\mathscr{G}$的基底。$x^\mu$为$\left(\mathscr{R}^4,\eta_{ab}\right)$的洛伦兹坐标系，则$\bm{\omega}=\omega_\mu\mathrm{dx}^\mu\in\Lambda_{\mathbb{R}^4}(1,\mathscr{G})$。
+
+对于主丛上的一个联络$\tilde{\bm{\omega}}$。两个不同的开子集$U\cap V\neq\emptyset$ 上的两个截面 $\sigma,\sigma'$，对应于一个规范变换， 另外还给出$\omega\to\omega'$的变换。要想证明规范势对应于联络， 则只需要证明
+\begin{equation}
+    \omega_\mu'=\mathscr{A}d_{g}\omega_\mu+L_{g*}g^{-1}_*(\partial/\partial x)
+\end{equation}
+
+\chapter{规范场强与曲率}
+
+给定局域截面$\sigma_U$后，$\bm{\omega}_U$对应于物理上的规范势。类似的，$\bm{\Omega}_U=\sigma_U^{*}\tilde{\bm{\Omega}}$对应于规范场强。首先，显然有
+
+\begin{equation}
+    \bm{\Omega}_U=\mathrm{d}\bm{\omega}_U+\frac{1}{2}[\bm{\omega}_U,\bm{\omega}_U]
+\end{equation}
+
+我们说，上式等价于规范场的表达式。证明如下：
+
+\begin{equation}
+\begin{split}
+    \bm{\Omega}_U
+    &=ke_r\mathrm{d}A_\mu^r\wedge\mathrm{d}x^\nu+\frac{k^2}{2}[e_r,e_s]A_\mu^s A_\nu^t dx^\mu\wedge dx^\nu\\
+    &=\frac{k}{2}e_r dx^\mu\wedge dx^\nu(\partial_\nu A_\mu^\nu-\partial_\mu A_\nu^r+kC^r_{st}A^s_\mu A_\nu^t)\\
+    &=\frac{1}{2}kF_{\mu\nu}^r e_r \mathrm{dx}^\mu\wedge\mathrm{dx}^\nu\\
+    &=k F_{\mu\nu}^r e_r \mathrm{dx}^\mu\mathrm{dx}^\nu\\
+\end{split}
+\end{equation}
+
+
+因此可知曲率$\Omega$在基底$e_r$下的分量（作为一个2形式场）的分量为$kF^{r}_{\mu\nu}$
+
+对于线性群（如SU(2)）,场的变换与矩阵群下的曲率变换相同。
+
+
+\chapter{协变导数$D_\mu$}
+
+
+\part{Appendix}
+
+\chapter{流形$M$上的$m$维$C^{\infty}$分布}
+
+对于流形$M$,给其上的每一个点$p$的切空间$T_p M$指定一个$m$维子空间$W_p$，便得到了$M$上的$m$维子空间场，也称为$m$维分布。
+
+我们称流形$M$上的$m$维分布光滑，若对于$\forall p\in M,\exists neighbourhood U of p$， 使得$U$上存在$m$个光滑矢量场$\left\{e_\mu\right\}$, s.t.
+$\forall q\in U$, $\left\{e_\mu\right\}$ 为 $W_q$ 的一组基底。
+
+\chapter{$\mathscr{V}$值$\bm{l}$形式场}
+
+对于$n$维矢量空间$\mathscr{V}$，取基底$\left\{e_{r}\right\}$以及流形$M$上的$n$个光滑$\mathrm{l}$形式场$\mathrm{\phi^{r}}$。定义$\mathscr{V}$值$\mathrm{l}$形式场
+\begin{equation}
+    \mathscr{\phi}=\mathscr{\phi}^re_r
+\end{equation}
+记为$\mathscr{\phi}\in\Lambda(l,\mathscr{V})$
+
+其中
+\begin{equation}
+    \mathscr{\phi}|_p(v_1,\dots,v_l)=e_r\mathscr{\phi}^r_p(v_1\dots,v_l)
+\end{equation}
+
+定义外微分
+\begin{equation}
+    \mathrm{d\phi}=e_r\mathrm{d\phi}^r\in\Lambda_{M}(l+1,\mathscr{V})
+\end{equation}
+
+显然，这两个定义与基底$e_r$的选取无关。
+
+对于流形$M,N$，$\mathscr{G}$为李代数，$A\in\mathscr{G},\alpha\in\Lambda_N(i,\mathbb{R})$，$f\colon M\to N$光滑。下面我们证明一系列重要的性质。
+
+显然有
+\begin{equation}
+    \begin{split}
+        &d(A\alpha)=Ad\alpha\\
+        &f^{*}(A\alpha)=A f^{*}(\alpha)
+    \end{split}
+\end{equation}
+
+且
+\begin{equation}
+    f^{*}(d\alpha)=d(f^{*}\alpha)
+\end{equation}
+
+\chapter{利用标架计算曲率}
+对于流形$M$上的给定联络$\nabla_a$，可以利用非坐标基底场$\left\{\left(e_\mu\right)^{a}\right\}$黎曼曲率张量$R_{abc}^{\;\;\;\;d}$
+
+
+\section{联络1形式}
+
+对于给定联络$\nabla_a$以及一组基底$\left\{\left(e_\mu\right)^{a}\right\}$，定义联络系数$\gamma^{\sigma}_{\mu\tau}$
+
+\begin{equation}
+    \left(e_\tau\right)^{b}\nabla_b\left(e_\mu\right)^{a}=\gamma^{\sigma}_{\;\;\mu\tau}\left(e_\sigma\right)^{a}
+\end{equation}
+
+将上式与$\left(e^{\nu}\right)_{a}$缩并得到
+
+\begin{equation}
+    \gamma^{\nu}_{\;\;\mu\tau}=\left(e^{\nu}\right)_a\left(e_\tau\right)^{b}\nabla_b\left(e_\mu\right)^{a}
+\end{equation}
+
+对于给定的$\mu,\nu$，以$\gamma^{\nu}_{\;\;\mu\tau}$的负值为分量，得到流形$M$上的一个1形式场，记作$\omega^{\;\;\nu}_{\mu\;\;a}$。即
+
+\begin{equation}
+    \omega^{\;\;\nu}_{\mu\;\;a}:=-\gamma^{\nu}_{\;\;\mu\tau}\left(e^{\tau}\right)_{a}=-(e^{\nu})_c\nabla_a(e_\mu)^c=(e_{\mu})_c\nabla_a(e^\nu)^c
+\end{equation}
+
+由于$\omega^{\;\;\nu}_{\mu\;\;a}$和$e^{\mu}_a$都是1形式，故省去下标，加粗记作$\bm{\omega}_{\mu}^{\;\;\nu}$和$\bm{e}^\mu$.
+
+下面我们证明嘉当第一方程。（对于无挠联络成立）
+\begin{equation}
+    \mathrm{d}\bm{e}^{\nu}=-\bm{e}^{\nu}\wedge\bm{\omega}_{\mu}^{\;\;\nu}
+\end{equation}
+
+证明如下：
+
+\begin{equation}
+    \begin{split}
+        RHS
+        &=-2e^{\mu}_{\;\;[a}(e_{\mu}^{\;\;c}\nabla_{b]})e^{\nu}_{\;\;c}\\
+        &=-2\nabla_{[b}(e^{\nu}_{\;\;a]})\\
+        &=LHS\\
+    \end{split}
+\end{equation}
+
+
+\section{曲率2形式}
+
+注意到$R_{ab\mu}^{\;\;\;\;\;\nu}=-R_{ba\mu}^{\;\;\;\;\;\nu}$，则可知$R_{ab\mu}^{\;\;\;\;\;\nu}$可以看作第$\mu,\nu$个2形式场$\bm{R}_{\mu}^{\;\;\nu}$，成为曲率2形式。
+
+根据联络1形式可以求得曲率2形式。即嘉当第二方程
+
+\begin{equation}
+    \bm{R}_{\mu}^{\;\;\nu}=\mathrm{d}\bm{\omega}_{\mu}^{\;\;\nu}+\bm{\omega}_{\mu}^{\;\;\lambda}\wedge\bm{\omega}_{\lambda}^{\;\;\nu}
+\end{equation}
+
+证明如下；
+
+\begin{equation}
+    \begin{split}
+        LHS
+        &=R_{abc}^{\;\;\;\;d}(e_{\mu})^{\;\;c}(e^{\nu})_d\\
+        &=2(e_{\mu})^{\;\;c}\nabla_{[a}\nabla{b]}(e^{\nu})_c\\
+    \end{split}
+\end{equation}
+
+运用莱布尼茨率并插入单位算符则得到结果。如果有挠率，则还要加上一项。
+
+\section{刚性标架}
+
+如果流形$M$上的度规$g_{ab}$给定且二者适配。利用$g_{ab}$对$(e^{\mu}_a),(e_{\mu}^a)$升降指标，即......随便升降
+
+$g_{\mu\nu}$为常数，即$\nabla_a g_{\mu\nu}=0$ 的标架为刚性标架。常用的有两大类，一类是正交归一标架，一类是复类光标架。
+
+定义里奇旋转系数$\omega_{\mu\nu\sigma}=\bm{\omega}_{\mu\nu a}(e_{\sigma})^a=g_{\nu\rho}\bm{\omega}_{\mu\;\;\; a}^{\;\;\nu}(e_{\sigma})^a$
+
+对于刚性标架，显然
+\begin{equation}
+    \bm{\omega}_{\mu\nu a}=(e_{\mu})^{b}\nabla_a(e_\nu)_{b}=(e_{\mu})_{b}\nabla_a(e_\nu)^{b}
+\end{equation}
+
+对于$\bm{\omega}_{\mu\nu a}$，有
+\begin{equation}
+    \bm{\omega}_{\mu\nu a}=-\bm{\omega}_{\nu\mu a}
+\end{equation}
+由刚性标架的定义以及莱布尼茨率显然。
+
+因此$\bm{\omega}_{\mu\nu a}$有$\frac{n(n-1)}{2}$ 个独立分量。 $\omega_{\mu\nu\rho}$有$\frac{n^2(n-1)}{2}$个独立分量，少于克氏符的独立个数$\frac{n^2(n+1)}{2}$
+
+因此，根据非坐标基底计算黎曼曲率张量的方法分为以下几步：
+\begin{itemize}
+    \item (a) 选定标架
+    \item (b) 计算联络1形式$\bm{\omega}_{\mu\;\;a}^{\;\;\nu}$
+    \item (c) 计算曲率2形式
+\end{itemize}
+
+对于刚性标架，既可以利用嘉当第一方程求解联络1形式，除此之外还有别的方法。简介如下：
+
+对于任一坐标系$\left\{x^{\mu}\right\}$，定义
+\begin{equation}
+    \Gamma_{\mu\nu\rho}:=\left[\left(e_{\nu}\right)_{\lambda,\tau}-\left(e_{\nu}\right)_{\tau,\lambda}\right]\left(e_\mu\right)^{\lambda}\left(e_\rho\right)^{\tau}
+\end{equation}
+
+注意到$\Gamma_{\mu\nu\rho}=-\Gamma_{\rho\nu\mu}$，因此共有$\frac{n^2(n-1)}{2}$个独立分量。
+
+下面证明
+\begin{equation}
+    \omega_{\mu\nu\rho}=\frac{1}{2}\left(\Gamma_{\mu\nu\rho}+\Gamma_{\rho\mu\nu}-\Gamma_{\nu\rho\mu}\right)
+\end{equation}
+
+证明如下：根据无挠性易得。
+
+
+
+\section{算例}
+
+
+
+\end{document}
